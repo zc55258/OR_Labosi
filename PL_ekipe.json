@@ -294,7 +294,7 @@
             "prezime": "Howe"
         },
         "igraci": [
-          { "ime": "Bruno", "prezime": "Guimaraes" },
+          { "ime": "Anthony", "prezime": "Gordon" },
           { "ime": "Kieran", "prezime": "Trippier" },
           { "ime": "Alexander", "prezime": "Isak" }
         ]
@@ -401,4 +401,3 @@
       }
     ]
   }
-  
