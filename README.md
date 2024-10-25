@@ -10,6 +10,11 @@
 > - trener (s atributima ime i prezime)
 > - igrači (po 3 igrača s atributima ime i prezime)
 
-## Opis skupa podataka
-> Ime skupa
+## Metapodaci skupa podataka
+> Ime skupa: PL_ekipe
+> Licenca: Creative Commons
+> Autor: Željko Capan
+> Verzija: 1.0
+> Jezik: hrvatski
+> Datum izrade 27.10.2024
 
