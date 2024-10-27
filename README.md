@@ -24,6 +24,3 @@ Ovaj skup podataka sadrži informacije o svih 20 nogometnih klubova engleske Pre
 - **Format skupa podataka**: CSV i JSON
 - **Izvor podataka**: Podaci su prikupljeni sa stranice https://www.premierleague.com/clubs
 
-## Dodatne informacije
-
-Ovaj skup podataka može biti koristan za sportske analize, razvoj aplikacija vezanih uz sport, edukativne projekte ili bilo koju vrstu istraživanja vezanog uz nogomet. Ako imate pitanja ili prijedloge za poboljšanje skupa podataka, slobodno se javite autoru.
