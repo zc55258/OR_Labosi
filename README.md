@@ -17,7 +17,7 @@ Ovaj skup podataka sadrži informacije o svih 20 nogometnih klubova engleske Pre
   - `stadion_kapacitet`: Kapacitet stadiona
   - `trener_ime`: Ime glavnog trenera kluba
   - `trener_prezime`: Prezime glavnog trenera kluba
-  - `igraci`: Popis igrača koji igraju za klub (u obliku JSON objekta)
+  - `igraci`: Popis igrača koji igraju za klub
     - `ime`: Ime igrača
     - `prezime`: Prezime igrača
 - **Datum posljednje izmjene**: 27.10.2024.
