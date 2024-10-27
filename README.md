@@ -4,7 +4,7 @@ Ovaj skup podataka sadrži informacije o svih 20 nogometnih klubova engleske Pre
 
 ## Metapodaci
 
-- **Opis otvorene licencije**: Ovaj skup podataka je licenciran pod [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+- **Opis otvorene licencije**: Ovaj skup podataka je licenciran pod [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
 - **Autor**: Željko Capan
 - **Verzija skupa podataka**: 1.0
 - **Jezik**: hrvatski
