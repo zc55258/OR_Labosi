@@ -1,61 +1,61 @@
-ï»¿"ime_kluba","grad","nadimak","stadion__naziv","stadion__kapacitet","godina_osnivanja","trener__ime","trener__prezime","igraci__ime","igraci__prezime"
-"Arsenal","London","The Gunners","Emirates Stadium","60704","1886","Mikel","Arteta","Bukayo","Saka"
-"","","","","","","","","Martin","Ã˜degaard"
-"","","","","","","","","Gabriel","Jesus"
-"Aston Villa","Birmingham","The Villans","Villa Park","42657","1874","Unai","Emery","Ollie","Watkins"
-"","","","","","","","","Jhon","Duran"
-"","","","","","","","","Emiliano","MartÃ­nez"
-"Bournemouth","Bournemouth","The Cherries","Vitality Stadium","11379","1899","Andoni","Iraola","Justin","Kluivert"
-"","","","","","","","","Philip","Billing"
-"","","","","","","","","Ryan","Christie"
-"Brentford","London","The Bees","Gtech Community Stadium","17250","1889","Thomas","Frank","Ivan","Toney"
-"","","","","","","","","Bryan","Mbeumo"
-"","","","","","","","","Christian","NÃ¸rgaard"
-"Brighton & Hove Albion","Brighton","The Seagulls","Falmer Stadium","30750","1901","Fabian","Hurzeler","Kaoru","Mitoma"
-"","","","","","","","","Evan","Ferguson"
-"","","","","","","","","Lewis","Dunk"
-"Chelsea","London","The Blues","Stamford Bridge","40173","1905","Enzo","Maresca","Cole","Palmer"
-"","","","","","","","","Enzo","FernÃ¡ndez"
-"","","","","","","","","Nicholas","Jackson"
-"Crystal Palace","London","The Eagles","Selhurst Park","25486","1905","Oliver","Glasner","Eberechi","Eze"
-"","","","","","","","","Odsonne","Ã‰douard"
-"","","","","","","","","Marc","GuÃ©hi"
-"Everton","Liverpool","The Toffees","Goodison Park","39572","1878","Sean","Dyche","Jordan","Pickford"
-"","","","","","","","","Dominic","Calvert-Lewin"
-"","","","","","","","","Dwight","McNeil"
-"Fulham","London","The Cottagers","Craven Cottage","29589","1879","Marco","Silva","JoÃ£o","Palhinha"
-"","","","","","","","","RaÃºl","JimÃ©nez"
-"","","","","","","","","Andreas","Pereira"
-"Ipswich Town","Ipswich","The Tractor Boys","Portman Road","30014","1878","Kieran","McKenna","Liam","Delap"
-"","","","","","","","","Axel","Tuanzebe"
-"","","","","","","","","Kalvin","Phillips"
-"Leicester City","Leicester","The Foxes","King Power Stadium","32259","1884","Steve","Cooper","Jamie","Vardy"
-"","","","","","","","","Wout","Faes"
-"","","","","","","","","Harry","Winks"
-"Liverpool","Liverpool","The Reds","Anfield","61276","1892","Arne","Slot","Mohamed","Salah"
-"","","","","","","","","Virgil","van Dijk"
-"","","","","","","","","Alisson","Becker"
-"Manchester City","Manchester","The Citizens","Etihad Stadium","53400","1880","Pep","Guardiola","Erling","Haaland"
-"","","","","","","","","Kevin","De Bruyne"
-"","","","","","","","","Phil","Foden"
-"Manchester United","Manchester","The Red Devils","Old Trafford","74310","1878","Erik","ten Hag","Bruno","Fernandes"
-"","","","","","","","","Marcus","Rashford"
-"","","","","","","","","Raphael","Varane"
-"Newcastle United","Newcastle upon Tyne","The Magpies","St James' Park","52305","1892","Eddie","Howe","Bruno","Guimaraes"
-"","","","","","","","","Kieran","Trippier"
-"","","","","","","","","Alexander","Isak"
-"Nottingham Forest","Nottingham","The Tricky Trees","City Ground","30445","1865","Steve","Cooper","Morgan","Gibbs-White"
-"","","","","","","","","Taiwo","Awoniyi"
-"","","","","","","","","Serge","Aurier"
-"Southampton","Southampton","The Saints","St Mary's Stadium","32384","1885","Russell","Martin","Adam","Armstrong"
-"","","","","","","","","Aaron","Ramsdale"
-"","","","","","","","","Cameron","Archer"
-"Tottenham Hotspur","London","Spurs","Tottenham Hotspur Stadium","62850","1882","Ange","Postecoglou","Heung-min","Son"
-"","","","","","","","","James","Maddison"
-"","","","","","","","","Dominic","Solanke"
-"West Ham United","London","The Hammers","London Stadium","62500","1900","Julen","Lopetegui","Lucas","PaquetÃ¡"
-"","","","","","","","","Jarrod","Bowen"
-"","","","","","","","","Michael","Antonio"
-"Wolverhampton Wanderers","Wolverhampton","Wolves","Molineux Stadium","31750","1877","Gary","O'Neil","Pedro","Neto"
-"","","","","","","","","Matheus","Cunha"
-"","","","","","","","","JosÃ©","SÃ¡"
+ime_kluba,grad,nadimak,godina_osnivanja,stadion_naziv,stadion_kapacitet,trener_ime,trener_prezime,igrac_ime,igrac_prezime
+Arsenal,London,The Gunners,1886,Emirates Stadium,60704,Mikel,Arteta,Bukayo,Saka
+Arsenal,London,The Gunners,1886,Emirates Stadium,60704,Mikel,Arteta,Martin,Ødegaard
+Arsenal,London,The Gunners,1886,Emirates Stadium,60704,Mikel,Arteta,Gabriel,Jesus
+Aston Villa,Birmingham,The Villans,1874,Villa Park,42657,Unai,Emery,Ollie,Watkins
+Aston Villa,Birmingham,The Villans,1874,Villa Park,42657,Unai,Emery,Jhon,Duran
+Aston Villa,Birmingham,The Villans,1874,Villa Park,42657,Unai,Emery,Emiliano,Martínez
+Bournemouth,Bournemouth,The Cherries,1899,Vitality Stadium,11379,Andoni,Iraola,Justin,Kluivert
+Bournemouth,Bournemouth,The Cherries,1899,Vitality Stadium,11379,Andoni,Iraola,Philip,Billing
+Bournemouth,Bournemouth,The Cherries,1899,Vitality Stadium,11379,Andoni,Iraola,Ryan,Christie
+Brentford,London,The Bees,1889,Gtech Community Stadium,17250,Thomas,Frank,Ivan,Toney
+Brentford,London,The Bees,1889,Gtech Community Stadium,17250,Thomas,Frank,Bryan,Mbeumo
+Brentford,London,The Bees,1889,Gtech Community Stadium,17250,Thomas,Frank,Christian,Nørgaard
+Brighton & Hove Albion,Brighton,The Seagulls,1901,Falmer Stadium,30750,Fabian,Hurzeler,Kaoru,Mitoma
+Brighton & Hove Albion,Brighton,The Seagulls,1901,Falmer Stadium,30750,Fabian,Hurzeler,Evan,Ferguson
+Brighton & Hove Albion,Brighton,The Seagulls,1901,Falmer Stadium,30750,Fabian,Hurzeler,Lewis,Dunk
+Chelsea,London,The Blues,1905,Stamford Bridge,40173,Enzo,Maresca,Cole,Palmer
+Chelsea,London,The Blues,1905,Stamford Bridge,40173,Enzo,Maresca,Enzo,Fernández
+Chelsea,London,The Blues,1905,Stamford Bridge,40173,Enzo,Maresca,Nicholas,Jackson
+Crystal Palace,London,The Eagles,1905,Selhurst Park,25486,Oliver,Glasner,Eberechi,Eze
+Crystal Palace,London,The Eagles,1905,Selhurst Park,25486,Oliver,Glasner,Odsonne,Édouard
+Crystal Palace,London,The Eagles,1905,Selhurst Park,25486,Oliver,Glasner,Marc,Guéhi
+Everton,Liverpool,The Toffees,1878,Goodison Park,39572,Sean,Dyche,Jordan,Pickford
+Everton,Liverpool,The Toffees,1878,Goodison Park,39572,Sean,Dyche,Dominic,Calvert-Lewin
+Everton,Liverpool,The Toffees,1878,Goodison Park,39572,Sean,Dyche,Dwight,McNeil
+Fulham,London,The Cottagers,1879,Craven Cottage,29589,Marco,Silva,João,Palhinha
+Fulham,London,The Cottagers,1879,Craven Cottage,29589,Marco,Silva,Raúl,Jiménez
+Fulham,London,The Cottagers,1879,Craven Cottage,29589,Marco,Silva,Andreas,Pereira
+Ipswich Town,Ipswich,The Tractor Boys,1878,Portman Road,30014,Kieran,McKenna,Liam,Delap
+Ipswich Town,Ipswich,The Tractor Boys,1878,Portman Road,30014,Kieran,McKenna,Axel,Tuanzebe
+Ipswich Town,Ipswich,The Tractor Boys,1878,Portman Road,30014,Kieran,McKenna,Kalvin,Phillips
+Leicester City,Leicester,The Foxes,1884,King Power Stadium,32259,Steve,Cooper,Jamie,Vardy
+Leicester City,Leicester,The Foxes,1884,King Power Stadium,32259,Steve,Cooper,Wout,Faes
+Leicester City,Leicester,The Foxes,1884,King Power Stadium,32259,Steve,Cooper,Harry,Winks
+Liverpool,Liverpool,The Reds,1892,Anfield,61276,Arne,Slot,Mohamed,Salah
+Liverpool,Liverpool,The Reds,1892,Anfield,61276,Arne,Slot,Virgil,van Dijk
+Liverpool,Liverpool,The Reds,1892,Anfield,61276,Arne,Slot,Alisson,Becker
+Manchester City,Manchester,The Citizens,1880,Etihad Stadium,53400,Pep,Guardiola,Erling,Haaland
+Manchester City,Manchester,The Citizens,1880,Etihad Stadium,53400,Pep,Guardiola,Kevin,De Bruyne
+Manchester City,Manchester,The Citizens,1880,Etihad Stadium,53400,Pep,Guardiola,Phil,Foden
+Manchester United,Manchester,The Red Devils,1878,Old Trafford,74310,Erik,ten Hag,Bruno,Fernandes
+Manchester United,Manchester,The Red Devils,1878,Old Trafford,74310,Erik,ten Hag,Marcus,Rashford
+Manchester United,Manchester,The Red Devils,1878,Old Trafford,74310,Erik,ten Hag,Raphael,Varane
+Newcastle United,Newcastle upon Tyne,The Magpies,1892,St James' Park,52305,Eddie,Howe,Anthony,Gordon
+Newcastle United,Newcastle upon Tyne,The Magpies,1892,St James' Park,52305,Eddie,Howe,Kieran,Trippier
+Newcastle United,Newcastle upon Tyne,The Magpies,1892,St James' Park,52305,Eddie,Howe,Alexander,Isak
+Nottingham Forest,Nottingham,The Tricky Trees,1865,City Ground,30445,Steve,Cooper,Morgan,Gibbs-White
+Nottingham Forest,Nottingham,The Tricky Trees,1865,City Ground,30445,Steve,Cooper,Taiwo,Awoniyi
+Nottingham Forest,Nottingham,The Tricky Trees,1865,City Ground,30445,Steve,Cooper,Serge,Aurier
+Southampton,Southampton,The Saints,1885,St Mary's Stadium,32384,Russell,Martin,Adam,Armstrong
+Southampton,Southampton,The Saints,1885,St Mary's Stadium,32384,Russell,Martin,Aaron,Ramsdale
+Southampton,Southampton,The Saints,1885,St Mary's Stadium,32384,Russell,Martin,Cameron,Archer
+Tottenham Hotspur,London,Spurs,1882,Tottenham Hotspur Stadium,62850,Ange,Postecoglou,Heung-min,Son
+Tottenham Hotspur,London,Spurs,1882,Tottenham Hotspur Stadium,62850,Ange,Postecoglou,James,Maddison
+Tottenham Hotspur,London,Spurs,1882,Tottenham Hotspur Stadium,62850,Ange,Postecoglou,Dominic,Solanke
+West Ham United,London,The Hammers,1900,London Stadium,62500,Julen,Lopetegui,Lucas,Paquetá
+West Ham United,London,The Hammers,1900,London Stadium,62500,Julen,Lopetegui,Jarrod,Bowen
+West Ham United,London,The Hammers,1900,London Stadium,62500,Julen,Lopetegui,Michael,Antonio
+Wolverhampton Wanderers,Wolverhampton,Wolves,1877,Molineux Stadium,31750,Gary,O'Neil,Pedro,Neto
+Wolverhampton Wanderers,Wolverhampton,Wolves,1877,Molineux Stadium,31750,Gary,O'Neil,Matheus,Cunha
+Wolverhampton Wanderers,Wolverhampton,Wolves,1877,Molineux Stadium,31750,Gary,O'Neil,José,Sá
