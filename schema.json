@@ -29,7 +29,7 @@
                         "type": "string",
                         "title": "The ime_kluba Schema",
                         "examples": [
-                            "Brighton \u0026 Hove Albion",
+                            "Brighton Hove Albion",
                             "Chelsea",
                             "Everton",
                             "Fulham",
@@ -1028,7 +1028,7 @@
                     }
                 },
                 "examples": [{
-                    "ime_kluba": "Brighton \u0026 Hove Albion",
+                    "ime_kluba": "Brighton Hove Albion",
                     "grad": "Brighton",
                     "nadimak": "The Seagulls",
                     "godina_osnivanja": 1901,
@@ -1550,7 +1550,7 @@
             },
             "examples": [
                 [{
-                    "ime_kluba": "Brighton \u0026 Hove Albion",
+                    "ime_kluba": "Brighton Hove Albion",
                     "grad": "Brighton",
                     "nadimak": "The Seagulls",
                     "godina_osnivanja": 1901,
@@ -2074,7 +2074,7 @@
     },
     "examples": [{
         "klubovi": [{
-            "ime_kluba": "Brighton \u0026 Hove Albion",
+            "ime_kluba": "Brighton Hove Albion",
             "grad": "Brighton",
             "nadimak": "The Seagulls",
             "godina_osnivanja": 1901,
