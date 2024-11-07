@@ -1,0 +1,127 @@
+.cijeli {
+    background-image: linear-gradient(90deg, aqua, #720e9e);
+}
+
+.naslov {
+    display: flex;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+}
+
+.zaglavlje {
+    display: flex;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#filter-text {
+    padding: 5px;
+    font-size: 20px;
+}
+
+.dropdown {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#filter-attribute {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    border-radius: 20px;
+    border-color: lime;
+    background-color: lime;
+    
+}
+
+#filter-value {
+    text-align:left;
+    font-size: 20px;
+    border-radius: 20px;
+    border-color: white;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.f-button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#filter-button {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    border-radius: 20px;
+    border-color: lime;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: lime;
+
+}
+
+.csv-button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#download-csv {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    border-radius: 20px;
+    border-color:#720e9e;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:#720e9e;
+    color: white;
+}
+
+.json-button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#download-json {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    border-radius: 20px;
+    border-color:#720e9e;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:#720e9e;
+    color: white;
+}
+
+#klubovi-table {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    margin-top: 25px;
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+#klubovi-table td {
+    background-color: white;
+    border: 1px solid black; /* Crna ivica između svake ćelije */
+    padding: 10px; /* Razmak unutar ćelija */
+    text-align: left; /* Poravnanje teksta na levo */
+}
+
+#klubovi-table th {
+    padding: 5px;
+    background-color:lime; /* Pozadina zaglavlja */
+    text-align: center;
+}
