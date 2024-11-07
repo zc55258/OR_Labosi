@@ -2,13 +2,31 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podaci Klubova</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <title>Premier League Klubovi</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Detaljni Pregled Klubova</h1>
-    <table id="kluboviTable" class="display" style="width:100%">
+    <h2>Premier League Klubovi</h2>
+
+    <!-- Dropdown za filtriranje i input za unos pojma -->
+    <label for="filter-attribute">Filtriraj po:</label>
+    <select id="filter-attribute">
+        <option value="">Prikaži Sve</option>
+        <option value="ime_kluba">Ime Kluba</option>
+        <option value="grad">Grad</option>
+        <option value="nadimak">Nadimak</option>
+        <option value="godina_osnivanja">Godina Osnivanja</option>
+        <option value="trener_ime">Ime Trenera</option>
+        <option value="trener_prezime">Prezime Trenera</option>
+    </select>
+
+    <input type="text" id="filter-value" placeholder="Unesite pojam za filtriranje">
+
+    <button id="filter-button">Primijeni Filtrar</button>
+    <button id="download-csv">Preuzmi CSV</button>
+    <button id="download-json">Preuzmi JSON</button>
+
+    <table id="klubovi-table">
         <thead>
             <tr>
                 <th>Ime Kluba</th>
@@ -16,7 +34,7 @@
                 <th>Nadimak</th>
                 <th>Godina Osnivanja</th>
                 <th>Stadion</th>
-                <th>Kapacitet Stadiona</th>
+                <th>Kapacitet</th>
                 <th>Trener</th>
                 <th>Igrači</th>
             </tr>
@@ -24,35 +42,57 @@
         <tbody></tbody>
     </table>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#kluboviTable').DataTable({
-                ajax: {
-                    url: 'http://localhost:3000/api/klubovi',
-                    dataSrc: ''
+        function loadData(filterAttribute = '', filterValue = '') {
+            $.ajax({
+                url: `http://localhost:3000/api/klubovi`,
+                type: 'GET',
+                data: {
+                    filterAttribute: filterAttribute,
+                    filterValue: filterValue
                 },
-                columns: [
-                    { data: 'ime_kluba' },
-                    { data: 'grad' },
-                    { data: 'nadimak' },
-                    { data: 'godina_osnivanja' },
-                    { data: 'stadion_naziv' },
-                    { data: 'stadion_kapacitet' },
-                    { 
-                        data: null,
-                        render: function(data, type, row) {
-                            return `${row.trener_ime} ${row.trener_prezime}`;
-                        }
-                    },
-                    { 
-                        data: 'igraci',
-                        render: function(data, type, row) {
-                            return data.map(igrac => `${igrac.ime} ${igrac.prezime}`).join(', ');
-                        }
-                    }
-                ]
+                success: function (data) {
+                    let tbody = $("#klubovi-table tbody");
+                    tbody.empty();
+                    data.forEach(klub => {
+                        tbody.append(`
+                            <tr>
+                                <td>${klub.ime_kluba}</td>
+                                <td>${klub.grad}</td>
+                                <td>${klub.nadimak}</td>
+                                <td>${klub.godina_osnivanja}</td>
+                                <td>${klub.stadion_naziv}</td>
+                                <td>${klub.stadion_kapacitet}</td>
+                                <td>${klub.trener_ime} ${klub.trener_prezime}</td>
+                                <td>${klub.igraci.map(igrac => `${igrac.ime} ${igrac.prezime}`).join(', ')}</td>
+                            </tr>
+                        `);
+                    });
+                }
+            });
+        }
+
+        function downloadFile(type) {
+            const filterAttribute = $("#filter-attribute").val();
+            const filterValue = $("#filter-value").val();
+            window.open(`http://localhost:3000/api/klubovi/download?type=${type}&filterAttribute=${filterAttribute}&filterValue=${filterValue}`);
+        }
+
+        $(document).ready(function() {
+            loadData();
+
+            $("#filter-button").click(function() {
+                const filterAttribute = $("#filter-attribute").val();
+                const filterValue = $("#filter-value").val();
+                loadData(filterAttribute, filterValue);
+            });
+
+            $("#download-csv").click(function() {
+                downloadFile("csv");
+            });
+
+            $("#download-json").click(function() {
+                downloadFile("json");
             });
         });
     </script>
