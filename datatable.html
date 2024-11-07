@@ -4,27 +4,43 @@
     <meta charset="UTF-8">
     <title>Premier League Klubovi</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="datatable.css">
 </head>
-<body>
-    <h2>Premier League Klubovi</h2>
+<body class="cijeli">
+    <h2 class="naslov">Premijer Liga</h2>
 
-    <!-- Dropdown za filtriranje i input za unos pojma -->
-    <label for="filter-attribute">Filtriraj po:</label>
-    <select id="filter-attribute">
-        <option value="">Prikaži Sve</option>
-        <option value="ime_kluba">Ime Kluba</option>
-        <option value="grad">Grad</option>
-        <option value="nadimak">Nadimak</option>
-        <option value="godina_osnivanja">Godina Osnivanja</option>
-        <option value="trener_ime">Ime Trenera</option>
-        <option value="trener_prezime">Prezime Trenera</option>
-    </select>
+    <div class="zaglavlje">
+    
+        <!-- Dropdown za filtriranje i input za unos pojma -->
+        <label id="filter-text" for="filter-attribute">Filtriraj po:</label>
+        <div class="dropdown">
+            <select id="filter-attribute">
+                <option value="wildcard">Prikaži sve</option>
+                <option value="ime_kluba">Ime kluba</option>
+                <option value="grad">Grad</option>
+                <option value="nadimak">Nadimak</option>
+                <option value="godina_osnivanja">Godina osnivanja</option>
+                <option value="trener_ime">Ime trenera</option>
+                <option value="trener_prezime">Prezime trenera</option>
+            </select>
+        </div>
 
-    <input type="text" id="filter-value" placeholder="Unesite pojam za filtriranje">
 
-    <button id="filter-button">Primijeni Filtrar</button>
-    <button id="download-csv">Preuzmi CSV</button>
-    <button id="download-json">Preuzmi JSON</button>
+        <input type="text" id="filter-value" placeholder="Unesite pojam za filtriranje">
+
+        <div class="f-button">        
+            <button id="filter-button">Primjeni</button>
+        </div>
+
+        <div class="csv-button">
+            <button id="download-csv">Preuzmi CSV</button>
+        </div>
+
+        <div class="json-button">
+            <button id="download-json">Preuzmi JSON</button>
+        </div>
+
+    </div>
 
     <table id="klubovi-table">
         <thead>
