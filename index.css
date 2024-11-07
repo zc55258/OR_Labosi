@@ -7,7 +7,7 @@
    font-size: 50px;
    display: flex;
    justify-content: center;
-   padding: 100px;
+   padding-top: 100px;
 }
 
 .preuzimanje {
@@ -77,4 +77,14 @@
     background-color: white;
     border-color: white;
 }
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+#slika {
+    max-width: 15%;
+}
+
+
 
