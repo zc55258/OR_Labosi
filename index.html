@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Početna stranica</title>
-</head>
-<body>
+    <link rel="stylesheet" href="index.css">
 
-    <h1>Klubovi engleske Premijer Lige</h1>
-    <p>
-        Preuzmite podatke u:
-        <a href="/PL_ekipe.csv" download>CSV formatu</a>
-        <a href="/PL_ekipe.json" download>JSON formatu</a>
-    </p>
-    <p><a href="datatable.html">Detaljni prikaz podataka</a></p>
+    <script>
+        function downloadCSV() { window.location.href = "/PL_ekipe.csv"; }
+        function downloadJSON() { window.location.href = "/PL_ekipe.json"; }
+        function tablica() { window.location.href = "datatable.html"; }
+    </script>
+</head>
+<body class="cijeli">
+
+    <div class="naslov">Klubovi engleske Premijer Lige</div>
+    <div id="tekst">Preuzmite podatke u formatima:</div>
+    <div class="preuzimanje">
+        <button id="csv" onclick="downloadCSV()">CSV</button>
+        <button id="json" onclick="downloadJSON()">JSON</button> 
+    </div>
+    <div class="tablica">
+        <button onclick="tablica()">Detaljni prikaz podataka</button>
+    </div>
     
 </body>
 </html>
