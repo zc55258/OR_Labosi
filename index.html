@@ -7,16 +7,36 @@
     <link rel="stylesheet" href="index.css">
 
     <script>
-        function downloadCSV() { window.location.href = "/PL_ekipe.csv"; }
-        function downloadJSON() { window.location.href = "/PL_ekipe.json"; }
-        function tablica() { window.location.href = "datatable.html"; }
+        function downloadCSV() {
+            // Force download of CSV
+            const link = document.createElement('a');
+            link.href = '/PL_ekipe.csv';
+            link.download = 'PL_ekipe.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function downloadJSON() {
+            // Force download of JSON
+            const link = document.createElement('a');
+            link.href = '/PL_ekipe.json';
+            link.download = 'PL_ekipe.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function tablica() {
+            window.location.href = "datatable.html";
+        }
     </script>
 </head>
 <body class="cijeli">
 
     <div class="naslov">Klubovi engleske Premijer Lige</div>
     <div class="logo">
-        <img id="slika" src="logo.png"></img>
+        <img id="slika" src="logo.png" alt="Logo">
     </div>
     <div id="tekst">Preuzmite podatke u formatima:</div>
     <div class="preuzimanje">
