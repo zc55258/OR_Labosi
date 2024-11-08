@@ -53,6 +53,7 @@
     padding-right: 10px;
 }
 
+
 #filter-button {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
@@ -65,6 +66,11 @@
     padding-right: 20px;
     background-color: lime;
 
+}
+
+#filter-button:hover {
+    background-color: white;
+    border-color: white;
 }
 
 .csv-button {
@@ -86,6 +92,12 @@
     color: white;
 }
 
+#download-csv:hover {
+    background-color: white;
+    border-color: white;
+    color:black;
+}
+
 .json-button {
     padding-left: 10px;
     padding-right: 10px;
@@ -103,6 +115,12 @@
     padding-right: 20px;
     background-color:#720e9e;
     color: white;
+}
+
+#download-json:hover {
+    background-color: white;
+    border-color: white;
+    color:black;
 }
 
 #klubovi-table {
