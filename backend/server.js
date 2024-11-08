@@ -75,11 +75,11 @@ app.get('/api/klubovi/download', async (req, res) => {
         if (type === 'csv') {
             const csv = json2csv(data);
             res.header('Content-Type', 'text/csv');
-            res.attachment('klubovi.csv');
+            res.attachment(`PL_ekipe_filtrirano_${filterAttribute}.csv`);
             res.send(csv);
         } else if (type === 'json') {
-            res.header('Content-Type', 'application/json');
-            res.attachment('klubovi.json');
+            res.header('Content-Type', 'text/json');
+            res.attachment(`PL_ekipe_filtrirano_${filterAttribute}.json`);
             res.send(JSON.stringify(data, null, 2));
         } else {
             res.status(400).json({ error: 'Nepoznat tip datoteke.' });
