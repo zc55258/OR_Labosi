@@ -1,95 +1,194 @@
 const express = require("express");
-const { Pool } = require("pg");
+const kluboviRoutes = require('./routes/klubovi');
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const json2csv = require("json2csv").parse;
+const { Pool } = require("pg");
 
 const app = express();
 const port = 3000;
 
+// Konfiguracija baze podataka
 const pool = new Pool({
-    user: 'postgres', 
-    host: 'localhost',
-    database: 'PL_ekipe',
-    password: 'c3H76B4QC2',
+    user: "postgres",
+    host: "localhost",
+    database: "PL_ekipe",
+    password: "c3H76B4QC2",
     port: 5433,
 });
 
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json());
+app.use('/api/klubovi', kluboviRoutes);
 
-app.get('/api/klubovi', async (req, res) => {
-    const { filterAttribute, filterValue } = req.query;
 
-    let query = `
-        SELECT k.ime_kluba, k.grad, k.nadimak, k.godina_osnivanja, 
-               s.naziv AS stadion_naziv, s.kapacitet AS stadion_kapacitet,
-               t.ime AS trener_ime, t.prezime AS trener_prezime,
-               json_agg(json_build_object('ime', i.ime, 'prezime', i.prezime)) AS igraci
-        FROM klubovi k
-        JOIN stadioni s ON k.id_kluba = s.id_kluba
-        JOIN treneri t ON k.id_kluba = t.id_kluba
-        LEFT JOIN igraci i ON k.id_kluba = i.id_kluba
-    `;
+function responseWrapper(data, error = null) {
+    return {
+        success: error === null,
+        data: data,
+        error: error,
+    };
+}
 
-    if (filterAttribute && filterValue) {
-        query += ` WHERE ${filterAttribute} ILIKE $1`;
-    }
-
-    query += ` GROUP BY k.id_kluba, s.naziv, s.kapacitet, t.ime, t.prezime`;
-
+// GET: Dohvati sve klubove
+app.get("/api/klubovi", async (req, res) => {
     try {
-        const result = await pool.query(query, filterAttribute && filterValue ? [`%${filterValue}%`] : []);
-        res.json(result.rows);
+        const result = await pool.query("SELECT * FROM klubovi");
+        res.json(responseWrapper(result.rows));
     } catch (error) {
-        console.error('Greška pri dohvaćanju podataka:', error);
-        res.status(500).json({ error: 'Došlo je do greške pri dohvaćanju podataka.' });
+        console.error("Greška pri dohvaćanju klubova:", error);
+        res.status(500).json(responseWrapper(null, "Greška pri dohvaćanju klubova."));
     }
 });
 
-// Endpoint za preuzimanje podataka u CSV ili JSON formatu
-app.get('/api/klubovi/download', async (req, res) => {
-    const { type, filterAttribute, filterValue } = req.query;
-
-    let query = `
-        SELECT k.ime_kluba, k.grad, k.nadimak, k.godina_osnivanja, 
-               s.naziv AS stadion_naziv, s.kapacitet AS stadion_kapacitet,
-               t.ime AS trener_ime, t.prezime AS trener_prezime,
-               json_agg(json_build_object('ime', i.ime, 'prezime', i.prezime)) AS igraci
-        FROM klubovi k
-        JOIN stadioni s ON k.id_kluba = s.id_kluba
-        JOIN treneri t ON k.id_kluba = t.id_kluba
-        LEFT JOIN igraci i ON k.id_kluba = i.id_kluba
-    `;
-
-    if (filterAttribute && filterValue) {
-        query += ` WHERE ${filterAttribute} ILIKE $1`;
-    }
-
-    query += ` GROUP BY k.id_kluba, s.naziv, s.kapacitet, t.ime, t.prezime`;
-
+// GET: Dohvati klub prema imenu kluba
+app.get("/api/klubovi/ime/:ime_kluba", async (req, res) => {
+    const { ime_kluba } = req.params;
     try {
-        const result = await pool.query(query, filterAttribute && filterValue ? [`%${filterValue}%`] : []);
-        const data = result.rows;
-
-        if (type === 'csv') {
-            const csv = json2csv(data);
-            res.header('Content-Type', 'text/csv');
-            res.attachment(`PL_ekipe_filtrirano_${filterAttribute}.csv`);
-            res.send(csv);
-        } else if (type === 'json') {
-            res.header('Content-Type', 'text/json');
-            res.attachment(`PL_ekipe_filtrirano_${filterAttribute}.json`);
-            res.send(JSON.stringify(data, null, 2));
+        const result = await pool.query("SELECT * FROM klubovi WHERE ime_kluba ILIKE $1", [`%${ime_kluba}%`]);
+        if (result.rows.length === 0) {
+            res.status(404).json(responseWrapper(null, `Klub s imenom ${ime_kluba} nije pronađen.`));
         } else {
-            res.status(400).json({ error: 'Nepoznat tip datoteke.' });
+            res.json(responseWrapper(result.rows));
         }
     } catch (error) {
-        console.error('Greška pri preuzimanju podataka:', error);
-        res.status(500).json({ error: 'Došlo je do greške pri preuzimanju podataka.' });
+        console.error("Greška pri dohvaćanju kluba:", error);
+        res.status(500).json(responseWrapper(null, "Greška pri dohvaćanju kluba."));
     }
 });
 
+// GET: Dohvati klubove prema gradu
+app.get("/api/klubovi/grad/:grad", async (req, res) => {
+    const { grad } = req.params;
+    try {
+        const result = await pool.query("SELECT * FROM klubovi WHERE grad ILIKE $1", [`%${grad}%`]);
+        res.json(responseWrapper(result.rows));
+    } catch (error) {
+        console.error("Greška pri dohvaćanju klubova prema gradu:", error);
+        res.status(500).json(responseWrapper(null, "Greška pri dohvaćanju klubova prema gradu."));
+    }
+});
+
+// GET: Dohvati klubove prema nadimku
+app.get("/api/klubovi/nadimak/:nadimak", async (req, res) => {
+    const { nadimak } = req.params;
+    try {
+        const result = await pool.query("SELECT * FROM klubovi WHERE nadimak ILIKE $1", [`%${nadimak}%`]);
+        res.json(responseWrapper(result.rows));
+    } catch (error) {
+        console.error("Greška pri dohvaćanju klubova prema nadimku:", error);
+        res.status(500).json(responseWrapper(null, "Greška pri dohvaćanju klubova prema nadimku."));
+    }
+});
+
+// GET: Dohvati klubove prema godini osnivanja
+app.get("/api/klubovi/godina/:godina", async (req, res) => {
+    const { godina } = req.params;
+    try {
+        const result = await pool.query("SELECT * FROM klubovi WHERE godina_osnivanja = $1", [godina]);
+        res.json(responseWrapper(result.rows));
+    } catch (error) {
+        console.error("Greška pri dohvaćanju klubova prema godini osnivanja:", error);
+        res.status(500).json(responseWrapper(null, "Greška pri dohvaćanju klubova prema godini osnivanja."));
+    }
+});
+
+// POST: Dodaj novi klub
+app.post("/api/klubovi", async (req, res) => {
+    const { ime_kluba, grad, nadimak, godina_osnivanja, stadion, trener, igraci } = req.body;
+
+    const client = await pool.connect();
+
+    try {
+        await client.query("BEGIN");
+
+        const klubResult = await client.query(
+            "INSERT INTO klubovi (ime_kluba, grad, nadimak, godina_osnivanja) VALUES ($1, $2, $3, $4) RETURNING id_kluba",
+            [ime_kluba, grad, nadimak, godina_osnivanja]
+        );
+        const klubId = klubResult.rows[0].id_kluba;
+
+        if (stadion) {
+            await client.query(
+                "INSERT INTO stadioni (id_kluba, naziv, kapacitet) VALUES ($1, $2, $3)",
+                [klubId, stadion.naziv, stadion.kapacitet]
+            );
+        }
+
+        if (trener) {
+            await client.query(
+                "INSERT INTO treneri (id_kluba, ime, prezime) VALUES ($1, $2, $3)",
+                [klubId, trener.ime, trener.prezime]
+            );
+        }
+
+        if (igraci && Array.isArray(igraci)) {
+            const playerPromises = igraci.map((igrac) =>
+                client.query(
+                    "INSERT INTO igraci (id_kluba, ime, prezime) VALUES ($1, $2, $3)",
+                    [klubId, igrac.ime, igrac.prezime]
+                )
+            );
+            await Promise.all(playerPromises);
+        }
+
+        await client.query("COMMIT");
+
+        res.status(201).json({
+            success: true,
+            message: "Klub i povezani entiteti uspješno dodani.",
+        });
+    } catch (error) {
+        await client.query("ROLLBACK");
+        console.error("Greška pri dodavanju kluba i povezanih entiteta:", error);
+        res.status(500).json({
+            success: false,
+            message: "Došlo je do greške pri dodavanju kluba i povezanih entiteta.",
+        });
+    } finally {
+        client.release();
+    }
+});
+
+
+// PUT: Ažuriraj klub prema imenu kluba
+app.put("/api/klubovi/ime/:ime_kluba", async (req, res) => {
+    const { ime_kluba } = req.params;
+    const { grad, nadimak, godina_osnivanja } = req.body;
+    try {
+        const result = await pool.query(
+            "UPDATE klubovi SET grad = $1, nadimak = $2, godina_osnivanja = $3 WHERE ime_kluba ILIKE $4 RETURNING *",
+            [grad, nadimak, godina_osnivanja, ime_kluba]
+        );
+        if (result.rows.length === 0) {
+            res.status(404).json(responseWrapper(null, `Klub s imenom ${ime_kluba} nije pronađen.`));
+        } else {
+            res.json(responseWrapper(result.rows[0]));
+        }
+    } catch (error) {
+        console.error("Greška pri ažuriranju kluba:", error);
+        res.status(500).json(responseWrapper(null, "Greška pri ažuriranju kluba."));
+    }
+});
+
+// DELETE: Obriši klub prema imenu kluba
+app.delete("/api/klubovi/ime/:ime_kluba", async (req, res) => {
+    const { ime_kluba } = req.params;
+    try {
+        const result = await pool.query("DELETE FROM klubovi WHERE ime_kluba ILIKE $1 RETURNING *", [ime_kluba]);
+        if (result.rows.length === 0) {
+            res.status(404).json(responseWrapper(null, `Klub s imenom ${ime_kluba} nije pronađen.`));
+        } else {
+            res.json(responseWrapper(result.rows[0]));
+        }
+    } catch (error) {
+        console.error("Greška pri brisanju kluba:", error);
+        res.status(500).json(responseWrapper(null, "Greška pri brisanju kluba."));
+    }
+});
+
+// Pokretanje servera
 app.listen(port, () => {
     console.log(`Poslužitelj pokrenut na http://localhost:${port}`);
 });
