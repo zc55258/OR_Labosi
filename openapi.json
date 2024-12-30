@@ -1,0 +1,253 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "API za upravljanje Premier League klubovima",
+      "description": "API omogućuje dodavanje, ažuriranje, brisanje i pretraživanje klubova, stadiona, trenera i igrača.",
+      "version": "1.0.0",
+      "contact": {
+        "name": "Administrator API-ja",
+        "email": "admin@example.com"
+      },
+      "license": {
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "paths": {
+      "/api/klubovi": {
+        "get": {
+          "summary": "Dohvati sve klubove",
+          "description": "Vraća popis svih klubova u bazi podataka.",
+          "responses": {
+            "200": {
+              "description": "Uspješno dohvaćeni klubovi.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Klub"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Greška pri dohvaćanju klubova."
+            }
+          }
+        },
+        "post": {
+          "summary": "Dodaj novi klub",
+          "description": "Dodaje novi klub zajedno sa stadionom, trenerom i igračima.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoviKlub"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Klub uspješno dodan."
+            },
+            "500": {
+              "description": "Greška pri dodavanju kluba."
+            }
+          }
+        }
+      },
+      "/api/klubovi/ime/{ime_kluba}": {
+        "get": {
+          "summary": "Dohvati klub prema imenu",
+          "description": "Vraća klub čije ime odgovara upitu.",
+          "parameters": [
+            {
+              "name": "ime_kluba",
+              "in": "path",
+              "required": true,
+              "description": "Ime kluba za pretragu.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Klub pronađen.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Klub"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Klub nije pronađen."
+            },
+            "500": {
+              "description": "Greška pri dohvaćanju kluba."
+            }
+          }
+        },
+        "put": {
+          "summary": "Ažuriraj klub prema imenu",
+          "description": "Ažurira podatke kluba prema imenu kluba.",
+          "parameters": [
+            {
+              "name": "ime_kluba",
+              "in": "path",
+              "required": true,
+              "description": "Ime kluba za ažuriranje.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AzuriraniKlub"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Klub uspješno ažuriran."
+            },
+            "404": {
+              "description": "Klub nije pronađen."
+            },
+            "500": {
+              "description": "Greška pri ažuriranju kluba."
+            }
+          }
+        },
+        "delete": {
+          "summary": "Obriši klub prema imenu",
+          "description": "Briše klub čije ime odgovara upitu.",
+          "parameters": [
+            {
+              "name": "ime_kluba",
+              "in": "path",
+              "required": true,
+              "description": "Ime kluba za brisanje.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Klub uspješno obrisan."
+            },
+            "404": {
+              "description": "Klub nije pronađen."
+            },
+            "500": {
+              "description": "Greška pri brisanju kluba."
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Klub": {
+          "type": "object",
+          "properties": {
+            "id_kluba": {
+              "type": "integer"
+            },
+            "ime_kluba": {
+              "type": "string"
+            },
+            "grad": {
+              "type": "string"
+            },
+            "nadimak": {
+              "type": "string"
+            },
+            "godina_osnivanja": {
+              "type": "integer"
+            }
+          }
+        },
+        "NoviKlub": {
+          "type": "object",
+          "properties": {
+            "ime_kluba": {
+              "type": "string"
+            },
+            "grad": {
+              "type": "string"
+            },
+            "nadimak": {
+              "type": "string"
+            },
+            "godina_osnivanja": {
+              "type": "integer"
+            },
+            "stadion": {
+              "type": "object",
+              "properties": {
+                "naziv": {
+                  "type": "string"
+                },
+                "kapacitet": {
+                  "type": "integer"
+                }
+              }
+            },
+            "trener": {
+              "type": "object",
+              "properties": {
+                "ime": {
+                  "type": "string"
+                },
+                "prezime": {
+                  "type": "string"
+                }
+              }
+            },
+            "igraci": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ime": {
+                    "type": "string"
+                  },
+                  "prezime": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "AzuriraniKlub": {
+          "type": "object",
+          "properties": {
+            "grad": {
+              "type": "string"
+            },
+            "nadimak": {
+              "type": "string"
+            },
+            "godina_osnivanja": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+  
