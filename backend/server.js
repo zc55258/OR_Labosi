@@ -188,7 +188,6 @@ app.delete("/api/klubovi/ime/:ime_kluba", async (req, res) => {
     }
 });
 
-// Pokretanje servera
 app.listen(port, () => {
     console.log(`Poslužitelj pokrenut na http://localhost:${port}`);
 });
