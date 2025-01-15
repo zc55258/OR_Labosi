@@ -5,6 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Početna stranica</title>
     <link rel="stylesheet" href="index.css">
+    <script>
+        // Dohvati korisničke podatke i prikazuj u korisničkom sučelju
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('/user')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Korisnik nije prijavljen.');
+                    }
+                    return response.json();
+                })
+                .then(user => {
+                    // Prikaz podataka prijavljenog korisnika
+                    const status = document.getElementById('status');
+                    status.innerHTML = `
+                        <div class="logged-in">
+                            <p class="info">${user.name}</p>
+                            <button class="logout-button" onclick="redirectLogout()">Odjava</button>
+                        </div>
+                    `;
+                })
+                .catch(() => {
+                    // Ako korisnik nije prijavljen
+                    const status = document.getElementById('status');
+                    status.innerHTML = `<button class="login-button" onclick="redirectLogin()">Prijava</button>`;
+                });
+            });
+
+            function redirectLogin() {
+                window.location.href = '/login';
+            }
+
+            function redirectLogout() {
+                window.location.href = '/logout';
+            }
+    </script>
+</head>
+<body class="cijeli">
+    <div id="user-info" class="user-info">
+        <p id="status">Provjeravam prijavu...</p>
+    </div>
+
+    <div class="naslov">Klubovi engleske Premijer Lige</div>
+    <div class="logo">
+        <img id="slika" src="logo.png" alt="Logo">
+    </div>
+    <div id="tekst">Preuzmite podatke u formatima:</div>
+    <div class="preuzimanje">
+        <button id="csv" onclick="downloadCSV()">CSV</button>
+        <button id="json" onclick="downloadJSON()">JSON</button> 
+    </div>
+    <div class="tablica">
+        <button onclick="tablica()">Detaljni prikaz podataka</button>
+    </div>
 
     <script>
         function downloadCSV() {
@@ -29,21 +82,5 @@
             window.location.href = "datatable.html";
         }
     </script>
-</head>
-<body class="cijeli">
-
-    <div class="naslov">Klubovi engleske Premijer Lige</div>
-    <div class="logo">
-        <img id="slika" src="logo.png" alt="Logo">
-    </div>
-    <div id="tekst">Preuzmite podatke u formatima:</div>
-    <div class="preuzimanje">
-        <button id="csv" onclick="downloadCSV()">CSV</button>
-        <button id="json" onclick="downloadJSON()">JSON</button> 
-    </div>
-    <div class="tablica">
-        <button onclick="tablica()">Detaljni prikaz podataka</button>
-    </div>
-    
 </body>
 </html>
