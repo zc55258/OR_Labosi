@@ -3,11 +3,16 @@ const kluboviRoutes = require('./routes/klubovi');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { Pool } = require("pg");
+const { auth } = require('express-openid-connect');
 
 const app = express();
 const port = 3000;
 
-// Konfiguracija baze podataka
+
+
+
+
+
 const pool = new Pool({
     user: "postgres",
     host: "localhost",
@@ -16,11 +21,44 @@ const pool = new Pool({
     port: 5433,
 });
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
-app.use(express.json());
-app.use('/api/klubovi', kluboviRoutes);
+// Konfiguracija Auth0
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: "kf7lJxkoYjUhVhMC2KZlYozh2-msXi1RuDH5PMFo6j5SViOtX0BKzArITKjXdhhj",
+    baseURL: "http://localhost:3000",
+    clientID: "nxGbH935NKcSLrtCv5TL8J9BZUFO6pA0",
+    issuerBaseURL: "https://dev-2gijkdr328psnf2j.us.auth0.com",
+};
+
+app.use(auth(config));
+
+// Služenje statičkih datoteka
+app.use(express.static("C:/Users/Željko/OneDrive/Dokumenti/GitHub/OR_Labosi"));
+
+// Ruta za dohvaćanje korisničkih podataka
+app.get("/user", (req, res) => {
+    if (req.oidc.isAuthenticated()) {
+        res.json({
+            name: req.oidc.user.name,
+            email: req.oidc.user.email
+        });
+    } else {
+        res.status(401).json({ error: "Korisnik nije prijavljen." });
+    }
+});
+
+// Ruta za glavnu stranicu
+app.get("/", (req, res) => {
+    res.sendFile(path.join("C:/Users/Željko/OneDrive/Dokumenti/GitHub/OR_Labosi", "index.html"));
+});
+
+
+
+//app.use(cors());
+//app.use(bodyParser.json());
+//app.use(express.json());
+//app.use('/api/klubovi', kluboviRoutes);
 
 
 function responseWrapper(data, error = null) {
@@ -35,10 +73,22 @@ function responseWrapper(data, error = null) {
 app.get("/api/klubovi", async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM klubovi");
-        res.json(responseWrapper(result.rows));
+
+        console.log("Podaci iz baze:", result.rows); // Prati ulaz
+        const clubs = result.rows.map(club => ({
+            "@context": "https://schema.org",
+            "@type": "SportsTeam",
+            "name": club.ime_kluba,
+            "addressLocality": club.grad,
+            "foundingDate": club.godina_osnivanja,
+            "alternateName": club.nadimak
+        }));
+
+        console.log("Formatirani JSON-LD podaci:", clubs); // Prati izlaz
+        res.json(clubs);
     } catch (error) {
         console.error("Greška pri dohvaćanju klubova:", error);
-        res.status(500).json(responseWrapper(null, "Greška pri dohvaćanju klubova."));
+        res.status(500).json({ error: "Greška pri dohvaćanju klubova." });
     }
 });
 
