@@ -74,7 +74,6 @@ app.get("/api/klubovi", async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM klubovi");
 
-        console.log("Podaci iz baze:", result.rows); // Prati ulaz
         const clubs = result.rows.map(club => ({
             "@context": "https://schema.org",
             "@type": "SportsTeam",
@@ -84,7 +83,7 @@ app.get("/api/klubovi", async (req, res) => {
             "alternateName": club.nadimak
         }));
 
-        console.log("Formatirani JSON-LD podaci:", clubs); // Prati izlaz
+       
         res.json(clubs);
     } catch (error) {
         console.error("Greška pri dohvaćanju klubova:", error);
